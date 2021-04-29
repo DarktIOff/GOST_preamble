@@ -1,0 +1,29 @@
+\documentclass[utf8x, 14pt, oneside, a4paper]{article}
+\include{preamble.inc}
+\begin{document}
+\include{TitlePage}
+	\normalsize
+	\setcounter{page}{2}
+		\pagebreak
+
+	% Переопределяем название \toc и выводим сам \toc
+	\renewcommand{\contentsname}{\normalsize\bfseries\centering СОДЕРЖАНИЕ}
+	\small
+	\tableofcontents
+	\normalsize
+
+		\pagebreak
+
+%	\section*{ОПРЕДЕЛЕНИЯ, ОБОЗНАЧЕНИЯ И СОКРАЩЕНИЯ}
+%
+%		\pagebreak
+
+%\include{} % внутри фигурных скобок пишем имя .tex файла, который хотели бы включить в наш документ. этот файл должен находиться в той же папке, что и main.tex
+Text \cite{1}
+\pagebreak
+
+\section*{}
+\bibliography{Bibliography}
+\addcontentsline{toc}{section}{СПИСОК ЛИТЕРАТУРЫ}
+		\pagebreak
+\end{document}
