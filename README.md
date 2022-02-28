@@ -1,6 +1,6 @@
-# GOST_preamble
+# GOST preamble
 
-Compiler - LuaLaTeX
+Compiler - LuaLaTeX (check in menu -> settings)
 
 If you're not runnin' in overleaf, you need to compile this way:
 
