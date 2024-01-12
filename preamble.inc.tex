@@ -134,4 +134,43 @@
 \usepackage{lastpage} % Для подсчета числа страниц
 \bibliographystyle{ugost2008} % ГОСТ для списка литературы
 \usepackage{amsmath} % для всякого математического
+\usepackage{gensymb}
+%\usepackage[toc,page]{appendix}
+\usepackage[title]{appendix}
+\usepackage[caption=false]{subfig}
+\usepackage{etoolbox}
+\usepackage{zref-totpages}
+\usepackage{lipsum}
 
+% для расчета количества
+\usepackage{totcount}
+%цитирований
+\newtotcounter{citnum}
+\def\oldbibitem{} \let\oldbibitem=\bibitem
+\def\bibitem{\stepcounter{citnum}\oldbibitem}
+
+\newcounter{totfigures}
+\newcounter{tottables}
+
+\providecommand\totfig{} 
+\providecommand\tottab{}
+
+\makeatletter
+\AtEndDocument{%
+  \addtocounter{totfigures}{\value{figure}}%
+  \addtocounter{tottables}{\value{table}}%
+  \immediate\write\@mainaux{%
+    \string\gdef\string\totfig{\number\value{totfigures}}%
+    \string\gdef\string\tottab{\number\value{tottables}}%
+  }%
+}
+\makeatother
+
+\pretocmd{\chapter}{\addtocounter{totfigures}{\value{figure}}\setcounter{figure}{0}}{}{}
+\pretocmd{\chapter}{\addtocounter{tottables}{\value{table}}\setcounter{table}{0}}{}{}
+
+
+\newcommand{\parder}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\newcommand{\sparder}[2]{\frac{\partial^{2} {#1}}{\partial {#2}^{2}}}
+\newcommand{\dalambert}[1]{\Box{#1}}
+\newcommand{\abs}[1]{\left|{#1}\right|}
